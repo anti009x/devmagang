@@ -1,0 +1,54 @@
+{% extends 'bankaccounttabel.html' %}
+
+<body>
+
+    <main>
+      <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editModal{{i.0}}">
+        <i class="material-icons">&#xE254;</i>
+    </button>
+    <!-- Edit Modal -->
+    <div class="modal fade" id="editModal{{i.0}}" tabindex="-1" aria-labelledby="editModalLabel{{i.0}}" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editModalLabel{{i.0}}">Edit Bank Account</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form method="post" action="{% url 'update' i.0 %}">
+              {% csrf_token %}
+              <div class="form-group mb-2">
+                <label for="bankacc_name">Bank Account Name</label>
+                <input type="text" class="form-control" id="bankacc_name" name="bankacc_name" value="{{i.2}}" required>
+              </div>
+              <div class="form-group mb-2">
+                <label for="bankacc_number">Bank Account Number</label>
+                <input type="text" class="form-control" id="bankacc_number" name="bankacc_number" value="{{i.3}}" required>
+              </div>
+              <div class="form-group mb-2">
+                <label for="coa_code">COA Code</label>
+                <input type="text" class="form-control" id="coa_code" name="coa_code" value="{{i.5}}" required>
+              </div>
+              <div class="form-group mb-2">
+                <label for="coa_name">COA Name</label>
+                <input type="text" class="form-control" id="coa_name" name="coa_name" value="{{i.6}}" required>
+              </div>
+              <div class="form-group mb-2">
+                <label for="acc_label">Account Label</label>
+                <input type="text" class="form-control" id="acc_label" name="acc_label" value="{{i.7}}" required>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    </main>
+    <footer>
+
+    </footer>
+
+</body>
