@@ -17,15 +17,21 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from bankaccount import views
-from login.views import login 
+
 from django.urls import include, path
 from taildiwndcss.views import taildwindcss
 from company.views import company, insertDataCompany, DeleteDataCompany, UpdateDataCompany
+from users.views import user, insertDataUser, DeleteDataUser
+from login.views import login_view, logoutview
 
 
 urlpatterns = [
       
     path('admin/', admin.site.urls),
+    
+    #login
+    path('login/', login_view, name='login'),
+    path('logout/', logoutview, name='logout'),
     
     #BankAccount
     path('bankaccount/', views.index, name='bankaccount'),
@@ -39,8 +45,14 @@ urlpatterns = [
     path('company/delete/<str:company_id>', DeleteDataCompany, name='delete'),
     path('company/update/<str:company_id>', UpdateDataCompany, name='update'),
     
+    #user
+    path ('users/',user,name='user'),
+    path ('users/insert', insertDataUser, name='insert'),
+    path ('users/delete/<int:user_id>', DeleteDataUser, name='delete'),
+    # path ('users/update/<str:user_id>', UpdateDataUser, name='update'),
     
-    path('login/', login, name='login'),
+    
+
     path("__reload__/", include("django_browser_reload.urls")),
     path('taildwindcss/', taildwindcss, name='taildwindcss'),
 
