@@ -5,7 +5,7 @@
 groups = ["default"]
 strategy = ["cross_platform", "inherit_metadata"]
 lock_version = "4.4.2"
-content_hash = "sha256:db9549fd6c18ab9dbd11be3e71564e8dd374862f83524c31d4631a90ce7a7d8c"
+content_hash = "sha256:e618c0b15614c177e692756ed435b95a4833a4c61b7641fa85de7e14fb9b5b28"
 
 [[package]]
 name = "asgiref"
@@ -119,6 +119,17 @@ dependencies = [
 files = [
     {file = "psycopg2-pool-1.2.tar.gz", hash = "sha256:e9ec38d5af15b7cef5546452797935129c99482b25646f258a21786bfb826bf3"},
     {file = "psycopg2_pool-1.2-py2.py3-none-any.whl", hash = "sha256:3c8251f6fac3145eb4c5bf3407bb61543dbbcbb8117af1341cd7a8b5468aedbb"},
+]
+
+[[package]]
+name = "python-dotenv"
+version = "1.0.1"
+requires_python = ">=3.8"
+summary = "Read key-value pairs from a .env file and set them as environment variables"
+groups = ["default"]
+files = [
+    {file = "python-dotenv-1.0.1.tar.gz", hash = "sha256:e324ee90a023d808f1959c46bcbc04446a10ced277783dc6ee09987c37ec10ca"},
+    {file = "python_dotenv-1.0.1-py3-none-any.whl", hash = "sha256:f7b63ef50f1b690dddf550d03497b66d609393b40b564ed0d674909a68ebf16a"},
 ]
 
 [[package]]

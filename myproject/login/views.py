@@ -49,3 +49,25 @@ def logoutview(request):
                 return JsonResponse({'status': 'error', 'message': 'Invalid auth key'}, status=401)
     else:
         return JsonResponse({'status': 'error', 'message': 'Authorization header missing'}, status=400)
+    
+@csrf_exempt
+@require_POST   
+def reset_password(request):
+    username = request.POST.get('username')
+    password_hash = request.POST.get('password_hash')
+    
+    if not username:
+        return JsonResponse({'status': 'error', 'message': 'Username is required'}, status=400)
+    
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM public.users WHERE username = %s", [username])
+        user = cursor.fetchone()
+    
+        if user is not None:
+            if not password_hash:
+                return JsonResponse({'status': 'error', 'message': 'New password is required'}, status=400)
+            
+            cursor.execute("UPDATE public.users SET password_hash = %s WHERE username = %s", [make_password(password_hash), username])
+            return JsonResponse({'status': 'success', 'message': 'Password reset successful'}, status=200)
+        else:
+            return JsonResponse({'status': 'error', 'message': 'User not found'}, status=404)
