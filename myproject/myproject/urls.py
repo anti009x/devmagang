@@ -22,7 +22,7 @@ from django.urls import include, path
 from taildiwndcss.views import taildwindcss
 from company.views import company, insertDataCompany, DeleteDataCompany, UpdateDataCompany
 from users.views import user, insertDataUser, DeleteDataUser
-from login.views import login_view, logoutview
+from login.views import login_view, logoutview, reset_password
 
 
 urlpatterns = [
@@ -32,6 +32,7 @@ urlpatterns = [
     #login
     path('login/', login_view, name='login'),
     path('logout/', logoutview, name='logout'),
+    path('resetpassword/', reset_password, name='resetpassword'),
     
     #BankAccount
     path('bankaccount/', views.index, name='bankaccount'),
@@ -50,6 +51,7 @@ urlpatterns = [
     path ('users/insert', insertDataUser, name='insert'),
     path ('users/delete/<int:user_id>', DeleteDataUser, name='delete'),
     # path ('users/update/<str:user_id>', UpdateDataUser, name='update'),
+    
     
     
 
