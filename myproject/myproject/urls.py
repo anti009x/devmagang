@@ -20,15 +20,25 @@ from bankaccount import views
 from login.views import login 
 from django.urls import include, path
 from taildiwndcss.views import taildwindcss
+from company.views import company, insertDataCompany, DeleteDataCompany, UpdateDataCompany
 
 
 urlpatterns = [
       
     path('admin/', admin.site.urls),
+    
+    #BankAccount
     path('bankaccount/', views.index, name='bankaccount'),
     path('bankaccount/insert', views.insertData, name='insert'),
     path('bankaccount/delete/<int:id>', views.DeleteData, name='delete'),
     path('bankaccount/update/<int:bankacc_id>', views.UpdateData, name='update'),
+    
+    #Company
+    path('company/', company, name='company'),
+    path('company/insert', insertDataCompany, name='insert'),
+    path('company/delete/<str:company_id>', DeleteDataCompany, name='delete'),
+    path('company/update/<str:company_id>', UpdateDataCompany, name='update'),
+    
     
     path('login/', login, name='login'),
     path("__reload__/", include("django_browser_reload.urls")),
