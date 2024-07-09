@@ -53,6 +53,8 @@ def insertDataUser(request):
         is_deleted = request.POST.get('is_deleted') and False
         deleted_by = request.POST.get('deleted_by') or None
         deleted_time = request.POST.get('deleted_time') or None
+        
+  
 
         # Simpan data ke dalam database
         with connection.cursor() as cursor:
