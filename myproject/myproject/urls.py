@@ -23,6 +23,8 @@ from taildiwndcss.views import taildwindcss
 from company.views import company, insertDataCompany, DeleteDataCompany, UpdateDataCompany
 from users.views import user, insertDataUser, DeleteDataUser
 from login.views import login_view, logoutview, reset_password
+from interestrate.views import interestrate, insertDataSukuBunga, DeleteDataSukuBunga, UpdateDataSukuBunga
+from chartofaccount.views import coa, insertDataCoa, DeleteDataCoa
 
 
 urlpatterns = [
@@ -33,6 +35,18 @@ urlpatterns = [
     path('login/', login_view, name='login'),
     path('logout/', logoutview, name='logout'),
     path('resetpassword/', reset_password, name='resetpassword'),
+    
+    #coa 
+    path('coa/',coa,name ='coa'),
+    path('coa/insert/', insertDataCoa, name='insert'),
+    path('coa/delete/<int:id>', DeleteDataCoa, name='delete'),
+    # path('coa/update/<int:id>', UpdateDataCoa, name='update'),
+    
+    #Suku Bunga
+    path('sukubunga/', interestrate, name='sukubunga'),
+    path ('sukubunga/insert', insertDataSukuBunga, name='insert'),
+    path ('sukubunga/delete/<int:id>', DeleteDataSukuBunga, name='delete'),
+    path ('sukubunga/update/<int:id>', UpdateDataSukuBunga, name='update'),
     
     #BankAccount
     path('bankaccount/', views.index, name='bankaccount'),
