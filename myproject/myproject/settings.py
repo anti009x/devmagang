@@ -52,6 +52,8 @@ INSTALLED_APPS = [
 #   'company',
 #   'theme',
     'coacategory',
+    'coagroup',
+    'coa_header',
   'django_browser_reload',
 ]
 
