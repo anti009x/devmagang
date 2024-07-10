@@ -93,7 +93,7 @@ def insertDataCoa(request):
                 id = cursor.fetchone()[0]
         company_id = request.POST.get('company_id')
       
-        coa_code = request.POST.get('coa_code') or ''.join([str(random.randint(0, 9)) for _ in range(6)])
+        coa_code = request.POST.get('coa_code') 
         coa_name = request.POST.get('coa_name')
         normal_balance = request.POST.get('normal_balance')
         subheader_id = request.POST.get('subheader_id')
