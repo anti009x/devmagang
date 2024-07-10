@@ -26,12 +26,22 @@ from login.views import login_view, logoutview, reset_password
 from interestrate.views import interestrate, insertDataSukuBunga, DeleteDataSukuBunga, UpdateDataSukuBunga
 from chartofaccount.views import coa, insertDataCoa, DeleteDataCoa
 from coacategory.views import coacategory, insertcoacategory, DeleteCoaCategory, UpdateCoaCategory
+from coagroup.views import coagroup, insertcoagroup, deletecoagroup, updatecoagroup
+from coa_header.views import coaheader, insertcoaheader, deletecoaheader, updatecoaheader
+
+
 
 
 
 urlpatterns = [
       
     path('admin/', admin.site.urls),
+    
+    #CoaHeader
+    path('coaheader/', coaheader, name='coaheader'),
+    path('coaheader/insert/', insertcoaheader, name='insert'),
+    path('coaheader/delete/<int:id>', deletecoaheader, name='delete'),
+    path ('coaheader/update/<int:id>', updatecoaheader, name='update'),
     
     #login
     path('login/', login_view, name='login'),
@@ -43,6 +53,12 @@ urlpatterns = [
     path('coa/insert/', insertDataCoa, name='insert'),
     path('coa/delete/<int:id>', DeleteDataCoa, name='delete'),
     # path('coa/update/<int:id>', UpdateDataCoa, name='update'),
+    
+    #coagroup
+    path('coagroup/', coagroup, name='coagroup'),
+    path('coagroup/insert/', insertcoagroup, name='insert'),
+    path('coagroup/delete/<str:id>', deletecoagroup, name='delete'),
+    path ('coagroup/update/<str:id>', updatecoagroup, name='update'),
     
     #coacategory
     path ('coacategory/', coacategory, name='coacategory'),
