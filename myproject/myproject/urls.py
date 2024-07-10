@@ -25,6 +25,8 @@ from users.views import user, insertDataUser, DeleteDataUser
 from login.views import login_view, logoutview, reset_password
 from interestrate.views import interestrate, insertDataSukuBunga, DeleteDataSukuBunga, UpdateDataSukuBunga
 from chartofaccount.views import coa, insertDataCoa, DeleteDataCoa
+from coacategory.views import coacategory, insertcoacategory, DeleteCoaCategory, UpdateCoaCategory
+
 
 
 urlpatterns = [
@@ -42,6 +44,11 @@ urlpatterns = [
     path('coa/delete/<int:id>', DeleteDataCoa, name='delete'),
     # path('coa/update/<int:id>', UpdateDataCoa, name='update'),
     
+    #coacategory
+    path ('coacategory/', coacategory, name='coacategory'),
+    path('coacategory/insert/', insertcoacategory, name='insert'),
+    path('coacategory/delete/<int:id>', DeleteCoaCategory, name='delete'),
+    path ('coacategory/update/<int:id>', UpdateCoaCategory, name='update'),
     #Suku Bunga
     path('sukubunga/', interestrate, name='sukubunga'),
     path ('sukubunga/insert', insertDataSukuBunga, name='insert'),

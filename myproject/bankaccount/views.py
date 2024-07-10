@@ -3,6 +3,7 @@ from django.db import connection
 from django.shortcuts import redirect
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
 
 
 
@@ -23,6 +24,18 @@ def UpdateData(request, bankacc_id):
         coa_code = request.POST.get('coa_code')
         coa_name = request.POST.get('coa_name')
         acc_label = request.POST.get('acc_label')
+        
+        
+        if bankacc_name is None:
+            return JsonResponse({'status':'error','message':'bankacc_name is required'},status=400)
+        if bankacc_number is None:
+            return JsonResponse({'status':'error','message':'bankacc_number is required'},status=400)
+        if coa_code is None :
+            return JsonResponse({'status':'error','message':'coa_code is required'},status=400)
+        if coa_name is None:
+            return JsonResponse({'status':'error','message':'coa_name is required'},status=400)
+        if acc_label is None:
+            return JsonResponse({'status':'error','message':'acc_label is required'},status=400)
 
         # Simpan data ke dalam database
         with connection.cursor() as cursor:
@@ -63,7 +76,25 @@ def insertData(request):
         coa_code = request.POST.get('coa_code')
         coa_name = request.POST.get('coa_name')
         acc_label = request.POST.get('acc_label')
-
+        
+        
+        if bankacc_id is None:
+            return JsonResponse({'status': 'error', 'message': 'Bank Account ID is required'}, status=400)
+        if company_id is None:
+            return JsonResponse({'status': 'error', 'message': 'Company ID is required'}, status=400)
+        if bankacc_name is None:
+            return JsonResponse({'status': 'error', 'message': 'Bank Account Name is required'}, status=400)
+        if bankacc_number is None:
+            return JsonResponse({'status': 'error', 'message': 'Bank Account Number is required'}, status=4000)
+        if coa_id is None:
+            return JsonResponse({'status': 'error', 'message': 'COA ID is required'}, status=400)
+        if coa_code is None:
+            return JsonResponse({'status': 'error', 'message': 'COA Code is required'}, status=400)
+        if coa_name is None:
+            return JsonResponse({'status': 'error', 'message': 'COA Name is required'}, status=400)
+        if acc_label is None:
+            return JsonResponse({'status': 'error', 'message': 'Account Label is required'}, status=400)
+        
         # Simpan data ke dalam database
         with connection.cursor() as cursor:
             cursor.execute("""
